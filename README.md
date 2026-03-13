@@ -38,19 +38,15 @@ To render screenshots in GitHub, place your exported images in:
 Once those files are added, this section will render automatically:
 
 ```md
-## Product Preview
 
-![Homepage Hero](docs/screenshots/homepage.png)<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 30 06 PM" src="https://github.com/user-attachments/assets/ef4d097f-1b75-44f6-8904-8234904cde6d" />
-![Menu Slider](docs/screenshots/menu-slider.png)<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 30 24 PM" src="https://github.com/user-attachments/assets/aeaed691-78c7-4dfc-b3cb-df75a7050d81" />
-![AI Chat](docs/screenshots/ai-chat.png)<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 30 31 PM" src="https://github.com/user-attachments/assets/e4225b58-6bf5-45fb-83e8-9d4798217c77" />
+<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 30 06 PM" src="https://github.com/user-attachments/assets/8269e9b8-2b41-46d5-bdd2-a2b324755ef8" />
 
-![Admin Dashboard](docs/screenshots/admin-dashboard.png)<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 46 43 PM" src="https://github.com/user-attachments/assets/27380aab-4445-44fb-8850-4540d00dbf3b" />
+Recom<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 30 24 PM" src="https://github.com/user-attachments/assets/daa272ed-09d2-4f55-9b81-28eb7dd97e63" />
+mended screenshots:
 
-```
+1. Home<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 30 31 PM" src="https://github.com/user-attachments/assets/7f204820-2161-487a-8b7e-8effacca9bc1" />
+page hero section with the `CHILLI SPICE` headline<img width="1470" height="956" alt="Screenshot 2026-03-13 at 9 44 11 PM" src="https://github.com/user-attachments/assets/8d465de3-8a18-4c84-9f75-be09f18689ac" />
 
-Recommended screenshots:
-
-1. Homepage hero section with the `CHILLI SPICE` headline
 2. Menu slider section with food cards
 3. AI concierge and reservation form layout
 4. Staff dashboard showing summary cards and reservation table
