@@ -269,7 +269,29 @@ def detect_reservation_intent(message: str, session: SessionState) -> bool:
     lowered = message.lower()
     if session.pending_intent == "reservation":
         return True
-    return any(term in lowered for term in ["reservation", "reserve", "book a table", "book table", "table for"])
+    tokens = tokenize(message)
+    compact = re.sub(r"[^a-z]", "", lowered)
+
+    direct_phrases = [
+        "reservation",
+        "reserve",
+        "book a table",
+        "book table",
+        "table for",
+        "book for",
+    ]
+    if any(term in lowered for term in direct_phrases):
+        return True
+
+    # Handle messy real-world inputs like "i want book atbale for 5"
+    if "book" in tokens and "for" in tokens:
+        if "table" in tokens or "bookatable" in compact or "atbale" in compact or "tbale" in compact:
+            return True
+
+    if "reserve" in tokens and ("table" in tokens or "atbale" in compact or "tbale" in compact):
+        return True
+
+    return False
 
 
 def extract_name(message: str) -> str | None:
