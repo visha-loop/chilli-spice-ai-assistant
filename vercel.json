@@ -1,41 +1,47 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://chilli-spice-ai-assistant.onrender.com/api/$1"
+      "src": "frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://chilli-spice-ai-assistant.onrender.com/api/$1"
     },
     {
-      "source": "/admin",
-      "destination": "/frontend/admin.html"
+      "src": "/admin",
+      "dest": "/frontend/admin.html"
     },
     {
-      "source": "/admin.html",
-      "destination": "/frontend/admin.html"
+      "src": "/admin.html",
+      "dest": "/frontend/admin.html"
     },
     {
-      "source": "/admin.js",
-      "destination": "/frontend/admin.js"
+      "src": "/admin.js",
+      "dest": "/frontend/admin.js"
     },
     {
-      "source": "/admin.css",
-      "destination": "/frontend/admin.css"
+      "src": "/admin.css",
+      "dest": "/frontend/admin.css"
     },
     {
-      "source": "/app.js",
-      "destination": "/frontend/app.js"
+      "src": "/app.js",
+      "dest": "/frontend/app.js"
     },
     {
-      "source": "/styles.css",
-      "destination": "/frontend/styles.css"
+      "src": "/styles.css",
+      "dest": "/frontend/styles.css"
     },
     {
-      "source": "/assets/(.*)",
-      "destination": "/frontend/assets/$1"
+      "src": "/assets/(.*)",
+      "dest": "/frontend/assets/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/frontend/index.html"
+      "src": "/(.*)",
+      "dest": "/frontend/index.html"
     }
   ]
 }
