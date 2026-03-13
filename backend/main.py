@@ -314,6 +314,31 @@ def extract_special_requests(message: str) -> str | None:
     return message.strip() if any(trigger in lowered for trigger in triggers) else None
 
 
+def parse_contextual_field(message: str, field: str) -> Any | None:
+    cleaned = message.strip()
+    if not cleaned:
+        return None
+
+    if field == "name":
+        if re.fullmatch(r"[A-Za-z][A-Za-z ]{1,40}", cleaned):
+            return cleaned.title()
+    elif field == "phone":
+        phone = extract_phone(cleaned)
+        if phone:
+            return phone
+    elif field == "date":
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", cleaned):
+            return cleaned
+    elif field == "time":
+        time_value = extract_time(cleaned)
+        if time_value:
+            return time_value
+    elif field == "guests":
+        if re.fullmatch(r"\d{1,2}", cleaned):
+            return int(cleaned)
+    return None
+
+
 def update_reservation_draft(message: str, draft: dict[str, Any]) -> dict[str, Any]:
     extracted = {
         "name": extract_name(message),
@@ -326,6 +351,12 @@ def update_reservation_draft(message: str, draft: dict[str, Any]) -> dict[str, A
     for key, value in extracted.items():
         if value not in (None, ""):
             draft[key] = value
+
+    missing_field = next_missing_field(draft)
+    if missing_field and not draft.get(missing_field):
+        contextual_value = parse_contextual_field(message, missing_field)
+        if contextual_value not in (None, ""):
+            draft[missing_field] = contextual_value
     return draft
 
 
