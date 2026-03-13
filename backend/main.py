@@ -638,5 +638,21 @@ def update_admin_reservation(
     return {"reservation": target, "message": f"Reservation #{reservation_id} updated."}
 
 
+@app.delete("/api/admin/reservations/{reservation_id}")
+def delete_admin_reservation(
+    reservation_id: int,
+    x_admin_token: str | None = Header(default=None),
+) -> dict[str, Any]:
+    require_admin_token(x_admin_token)
+    reservations = load_reservations()
+    remaining = [item for item in reservations if item["id"] != reservation_id]
+    if len(remaining) == len(reservations):
+        raise HTTPException(status_code=404, detail="Reservation not found")
+    for index, item in enumerate(remaining, start=1):
+        item["id"] = index
+    save_reservations(remaining)
+    return {"message": f"Reservation #{reservation_id} deleted."}
+
+
 if FRONTEND_DIR.exists():
     app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

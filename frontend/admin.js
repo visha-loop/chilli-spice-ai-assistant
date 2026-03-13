@@ -72,6 +72,25 @@ async function updateReservation(reservationId, payload) {
   await loadReservations();
 }
 
+async function deleteReservation(reservationId) {
+  const confirmed = window.confirm(`Delete reservation #${reservationId}?`);
+  if (!confirmed) {
+    return;
+  }
+
+  const response = await fetch(`${apiBase}/api/admin/reservations/${reservationId}`, {
+    method: "DELETE",
+    headers: { "x-admin-token": adminToken },
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    setStatus(result.detail || "Could not delete reservation.", true);
+    return;
+  }
+  setStatus(result.message, false);
+  await loadReservations();
+}
+
 function reservationRow(item) {
   const statusOptions = ["new", "confirmed", "seated", "completed", "cancelled"]
     .map((status) => `<option value="${status}" ${item.status === status ? "selected" : ""}>${status}</option>`)
@@ -95,6 +114,7 @@ function reservationRow(item) {
       <td>
         <textarea class="row-note" data-id="${item.id}" rows="2" placeholder="Internal notes...">${item.internal_notes || ""}</textarea>
         <button class="save-note-btn" type="button" data-id="${item.id}">Save</button>
+        <button class="delete-row-btn" type="button" data-id="${item.id}">Delete</button>
       </td>
     </tr>
   `;
@@ -112,6 +132,12 @@ function bindTableActions() {
       const id = Number(button.dataset.id);
       const note = document.querySelector(`.row-note[data-id="${id}"]`).value;
       await updateReservation(id, { internal_notes: note });
+    });
+  });
+
+  document.querySelectorAll(".delete-row-btn").forEach((button) => {
+    button.addEventListener("click", async () => {
+      await deleteReservation(Number(button.dataset.id));
     });
   });
 }
