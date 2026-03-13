@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chilli Spice Staff Dashboard</title>
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section class="login-panel" id="loginPanel">
+        <div class="login-copy">
+          <p class="eyebrow">Staff Console</p>
+          <h1>Chilli Spice Reservations</h1>
+          <p>
+            Clean, fast reservation management for restaurant staff. Track bookings,
+            confirm covers, and update service status in one place.
+          </p>
+        </div>
+        <form id="adminForm" class="login-form">
+          <input id="adminUsername" type="text" placeholder="Username" value="manager" required />
+          <input id="adminPassword" type="password" placeholder="Password" required />
+          <button type="submit">Enter Dashboard</button>
+          <p id="adminStatus" class="status-text"></p>
+        </form>
+      </section>
+
+      <section class="dashboard" id="dashboard" hidden>
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Restaurant Ops</p>
+            <h2>Reservations Dashboard</h2>
+          </div>
+          <div class="dashboard-user">
+            <span id="userBadge">Manager</span>
+          </div>
+        </header>
+
+        <section class="summary-grid" id="summaryGrid"></section>
+
+        <section class="toolbar">
+          <input id="filterDate" type="date" />
+          <select id="filterStatus">
+            <option value="all">All statuses</option>
+          </select>
+          <input id="filterQuery" type="text" placeholder="Search guest, phone, note..." />
+          <button id="applyFiltersBtn" type="button">Apply Filters</button>
+        </section>
+
+        <section class="table-card">
+          <div class="table-head">
+            <div>
+              <p class="eyebrow">Live List</p>
+              <h3>All Reservations</h3>
+            </div>
+            <p id="tableMeta" class="table-meta"></p>
+          </div>
+          <div id="reservationTable" class="reservation-table"></div>
+        </section>
+      </section>
+    </main>
+    <script src="./admin.js"></script>
+  </body>
+  </html>

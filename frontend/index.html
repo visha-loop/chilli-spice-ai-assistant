@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chilli Spice</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="utility-bar">
+        <span>Authentic Indian, Italian and Chinese dining</span>
+        <div class="utility-links">
+          <a href="#helpSection">Help</a>
+          <a href="#reservationSection">Reserve</a>
+          <a href="#chatSection">AI Chat</a>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a class="brandmark" href="#top" aria-label="Chilli Spice home">
+          <span class="brandmark-box">CS</span>
+        </a>
+        <div class="nav-links">
+          <a href="#menuSection">Menu</a>
+          <a href="#reservationSection">Reservations</a>
+          <a href="#helpSection">Help</a>
+          <a href="#chatSection">AI Concierge</a>
+        </div>
+        <button class="nav-cta" type="button" onclick="document.getElementById('reservationSection').scrollIntoView({behavior:'smooth'})">
+          Book Now
+        </button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-banner">
+        <div class="hero-media">
+          <img src="./assets/photos/delhi-butter-chicken.jpg" alt="Chilli Spice signature dish" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <p class="hero-kicker">Chilli Spice Restaurant</p>
+          <h1 class="hero-title">
+            <span class="title-shadow">CHILLI SPICE</span>
+            <span class="title-main">CHILLI SPICE</span>
+          </h1>
+          <p class="hero-copy">
+            Rich fire. Slow flavor. A restaurant front end designed like a launch campaign,
+            with immersive dining visuals, reservations, and one-tap AI guidance.
+          </p>
+          <div class="hero-actions">
+            <button class="hero-button primary" type="button" onclick="document.getElementById('menuSection').scrollIntoView({behavior:'smooth'})">
+              Explore Menu
+            </button>
+            <button class="hero-button secondary" type="button" onclick="document.getElementById('chatSection').scrollIntoView({behavior:'smooth'})">
+              Open AI Chat
+            </button>
+          </div>
+          <div class="hero-shortcuts">
+            <button class="entry-card" type="button" data-target="reservationSection">
+              <span class="entry-icon">R</span>
+              <strong>Reservations</strong>
+            </button>
+            <button class="entry-card" type="button" data-target="menuSection">
+              <span class="entry-icon">M</span>
+              <strong>Food Menu</strong>
+            </button>
+            <button class="entry-card" type="button" data-target="helpSection">
+              <span class="entry-icon">H</span>
+              <strong>Help</strong>
+            </button>
+            <button class="entry-card" type="button" data-target="chatSection">
+              <span class="entry-icon">AI</span>
+              <strong>AI Chat</strong>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="campaign-strip">
+        <p>Open late. Real ingredients. Fast reservations. AI-powered menu guidance.</p>
+      </section>
+
+      <section id="menuSection" class="menu-showcase">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Featured Dining</p>
+            <h2>Slide Through The Menu</h2>
+          </div>
+          <div class="carousel-controls">
+            <button id="menuPrevBtn" class="ghost-button" type="button">Prev</button>
+            <button id="menuNextBtn" class="ghost-button" type="button">Next</button>
+          </div>
+        </div>
+        <div id="menuGrid" class="menu-grid"></div>
+      </section>
+
+      <section class="content-shell">
+        <section id="chatSection" class="assistant-panel panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">AI Concierge</p>
+              <h2>Ask Chilli Spice</h2>
+            </div>
+            <button id="showPopularBtn" class="ghost-button" type="button">Popular picks</button>
+          </div>
+          <div id="quickPrompts" class="quick-prompts"></div>
+          <div id="chatMessages" class="messages"></div>
+          <form id="chatForm" class="composer">
+            <input
+              id="chatInput"
+              name="message"
+              type="text"
+              placeholder="Ask for pairings, spicy dishes, vegan options, or book a table..."
+              required
+            />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+
+        <aside class="side-stack">
+          <section id="reservationSection" class="panel reservation-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Reservations</p>
+                <h2>Reserve A Table</h2>
+              </div>
+            </div>
+            <form id="reservationForm" class="reservation-form">
+              <input name="name" type="text" placeholder="Guest name" required />
+              <input name="phone" type="tel" placeholder="Phone number" required />
+              <div class="two-up">
+                <input name="date" type="date" required />
+                <input name="time" type="time" required />
+              </div>
+              <input name="guests" type="number" min="1" max="20" placeholder="Party size" required />
+              <textarea
+                name="special_requests"
+                rows="3"
+                placeholder="Birthday, allergy note, seating preference..."
+              ></textarea>
+              <button type="submit">Confirm Reservation</button>
+            </form>
+            <div id="reservationStatus" class="reservation-status"></div>
+          </section>
+
+          <section id="helpSection" class="panel info-panel">
+            <p class="section-label">Help</p>
+            <h2>Designed To Feel Like A Launch</h2>
+            <p>
+              Big visual entry, sharp categories, clear actions, and a premium content rhythm.
+              The menu, booking flow, and AI assistant are all still connected underneath.
+            </p>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
